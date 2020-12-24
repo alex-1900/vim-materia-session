@@ -1,5 +1,5 @@
 # Materia Session
-Vim/Neovim session manager from [Materia](https://github.com/speed-sonic/vim-materia).
+The automated Vim/Neovim session management for [Materia](https://github.com/speed-sonic/vim-materia).
 
 ## Installation
 using a Vim plug-in manager
