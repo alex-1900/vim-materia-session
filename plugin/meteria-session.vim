@@ -9,26 +9,33 @@ if exists("g:loaded_meteria_session") || v:version < 700 || &cp
 endif
 let g:loaded_meteria_session = 1
 
+" session mode: `file` or `dir`
 let g:meteria_session_mode = get(g:, 'meteria_session_mode', 'dir')
 let g:materia_session_directory = get(g:, 'materia_session_directory', $HOME . '/.meteria_session')
 let g:materia_session_filename = get(g:, 'materia_session_filename', 'Session.vim')
 
-command! -nargs=? MeteriaSessionLoad call s:load_session(<f-args>)
-command! -nargs=? MeteriaSessionSave call s:save_session_file(<f-args>)
-command! MeteriaSessionAutosaveOnActions call s:autosave_session_on_action()
+command! -nargs=? MeteriaSessionLoad call MeteriaSessionLoad(<f-args>)
+command! -nargs=? MeteriaSessionSave call MeteriaSessionSave(<f-args>)
+command! MeteriaSessionToggleAutosave call MeteriaSessionToggleAutosave()
+command! MeteriaSessionAutosaveEnable call MeteriaSessionAutosaveEnable()
+command! MeteriaSessionAutosaveDisable call MeteriaSessionAutosaveDisable()
 
-nnoremap <silent> <Plug>(meteria-session-load) :<C-u>call s:load_session()<CR>
+nnoremap <silent> <Plug>(meteria-session-load) :<C-u>call MeteriaSessionLoad()<CR>
+nnoremap <silent> <Plug>(meteria-session-save) :<C-u>call MeteriaSessionSave()<CR>
+nnoremap <silent> <Plug>(meteria-session-toggle-autosave) :<C-u>call MeteriaSessionToggleAutosave()<CR>
+nnoremap <silent> <Plug>(meteria-session-autosave-enable) :<C-u>call MeteriaSessionAutosaveEnable()<CR>
+nnoremap <silent> <Plug>(meteria-session-autosave-disable) :<C-u>call MeteriaSessionAutosaveDisable()<CR>
 
-function! s:load_session(...)
+function! MeteriaSessionLoad(...)
   if filereadable(s:load_this_session(get(a:, 1, 0)))
     execute 'source' fnameescape(v:this_session)
   endif
 endfunction
 
-function! s:save_session_file(...)
+function! MeteriaSessionSave(...)
   if s:frequency_lock(1)
     if g:meteria_session_mode ==# 'dir' && !isdirectory(g:materia_session_directory)
-      mkdir(g:materia_session_directory, 'p')
+      call mkdir(g:materia_session_directory, 'p')
     endif
     if s:load_this_session(get(a:, 1, 0)) != ''
       execute 'mksession! '. fnameescape(v:this_session)
@@ -36,10 +43,25 @@ function! s:save_session_file(...)
   endif
 endfunction
 
-function! s:autosave_session_on_action()
-  augroup meteria_session_autosave
-    autocmd! BufLeave,FocusLost,FocusGained,InsertLeave * call s:save_session_file()
+let s:session_autosave_on_actions = 0
+function! MeteriaSessionToggleAutosave()
+  if s:session_autosave_on_actions
+    call MeteriaSessionAutosaveDisable()
+  else
+    call MeteriaSessionAutosaveEnable()
+  endif
+endfunction
+
+function! MeteriaSessionAutosaveEnable()
+  augroup MeteriaSessionAutosave
+    autocmd! BufLeave,FocusLost,FocusGained,InsertLeave * call MeteriaSessionSave()
   augroup END
+  let s:session_autosave_on_actions = 1
+endfunction
+
+function! MeteriaSessionAutosaveDisable()
+  augroup! MeteriaSessionAutosave
+  let s:session_autosave_on_actions = 0
 endfunction
 
 
