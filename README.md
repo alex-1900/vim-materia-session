@@ -5,14 +5,14 @@ Vim/Neovim session manager from [Materia](https://github.com/speed-sonic/vim-mat
 using a Vim plug-in manager
 
 ### Using Plug
-```vimscript
+```vim
 call plug#begin('~/.vim/plugged')
 Plug 'speed-sonic/vim-materia-session'
 call plug#end()
 ```
 
 ### Using Plug
-```vimscript
+```vim
 call dein#begin('~/.cache/dein')
 call dein#add('speed-sonic/vim-materia-session')
 call dein#end()
