@@ -11,7 +11,7 @@ Plug 'speed-sonic/vim-materia-session'
 call plug#end()
 ```
 
-### Using Plug
+### Using Dein
 ```vim
 call dein#begin('~/.cache/dein')
 call dein#add('speed-sonic/vim-materia-session')
