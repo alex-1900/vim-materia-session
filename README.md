@@ -34,10 +34,10 @@ Note that You should set `sessionoptions` in your `.vimrc` or `init.vim`(neovim)
 set sessionoptions-=options
 ```
 
-- `:MateriaSessionSave`:   
+- `:MateriaSessionSave [filename]`:   
 This command will call the `:mksession` and saves your current session or create a new session by the `g:materia_session_mode`.
 
-- `:MateriaSessionLoad`:  
+- `:MateriaSessionLoad [filename]`:  
 This command will load the current session based on the `g:materia_session_mode` variable.
 
 - `:MateriaSessionAutosaveEnable`:  
