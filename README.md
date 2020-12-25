@@ -26,7 +26,7 @@ plug-in options:
 | `g:materia_session_mode` | There are two types: 1) `file`: Save the session file in the current directory, default file name is `Session.vim`.  2) `dir` (default): Save the session file in a specific directory, the session file name is Formatted current directory path. | `dir` |
 | `g:materia_session_directory` | Set the storage directory in `dir` mode | `~/.materia_session` |
 | `g:materia_session_filename` | Set the session filename in `file` mode | `Session.vim` |
-| `g:session_autosave_on_actions` | Set to `1` or `0` to enable/disable autosave features after the plugin loaded | `0` |
+| `g:session_autosave_on_actions` | Set to `1` or `0` to enable/disable autosave features on buffers changed | `0` |
 
 ## Commands
 Note that You should set `sessionoptions` in your `.vimrc` or `init.vim`(neovim). Usually, we disable the `options` parameter.
