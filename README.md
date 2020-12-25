@@ -40,10 +40,10 @@ Note that You should set `sessionoptions` in your `.vimrc` or `init.vim`(neovim)
 set sessionoptions-=options
 ```
 
-- `:MateriaSessionSave [filename]`:   
+- `:MateriaSessionSave {file}`:   
 This command will call the `:mksession` and saves your current session or create a new session by the `g:materia_session_mode`.
 
-- `:MateriaSessionLoad [filename]`:  
+- `:MateriaSessionLoad {file}`:  
 This command will load the current session based on the `g:materia_session_mode` variable.
 
 - `:MateriaSessionAutosaveEnable`:  
@@ -52,5 +52,5 @@ This command will enable the autosave feature on buffers changed
 - `:MateriaSessionAutosaveDisable`:  
 This command will disable the "auto save on buffer changes" feature.
 
-- `:MateriaSessionAutosaveDisable`:  
+- `:MateriaSessionToggleAutosave`:  
 This command will switch between the `:MateriaSessionAutosaveEnable` and `:MateriaSessionAutosaveDisable`

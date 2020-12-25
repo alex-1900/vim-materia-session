@@ -1,0 +1,27 @@
+*materia-session.txt*  The automated Vim/Neovim session management for Materia
+
+Author:  Alex Layton <omytty.alex@126.com>
+Repo:    https://github.com/speed-sonic/vim-materia-session
+License: MIT license
+
+USAGE                                           *materia-session* *materiasession*
+
+:MateriaSessionSave {file}      This command will call the `:mksession` and saves
+                                your current session or create a new session by the 
+                                `g:materia_session_mode`.
+
+:MateriaSessionLoad {file}      This command will load the current session based on
+                                the `g:materia_session_mode` variable.
+
+:MateriaSessionAutosaveEnable   This command will enable the autosave feature on buffers changed.
+
+:MateriaSessionAutosaveDisable  This command will disable the "auto save on buffer changes" feature.
+
+:MateriaSessionToggleAutosave   This command will switch between the `:MateriaSessionAutosaveEnable`
+                                and `:MateriaSessionAutosaveDisable`
+
+Loading a session created with |:Obsession| automatically resumes updates to
+that file.
+
+ vim:tw=78:et:ft=help:norl:
+ 
