@@ -24,6 +24,9 @@ command! MateriaSessionAutosaveDisable :let g:session_autosave_on_actions = 0
 function! MateriaSessionLoad(...)
   if filereadable(s:load_this_session(get(a:, 1, 0)))
     execute 'source' fnameescape(v:this_session)
+    if exists('#User#MateriaSessionLoaded')
+      doautocmd <nomodeline> User MateriaSessionLoaded
+    endif
   endif
 endfunction
 
