@@ -43,7 +43,7 @@ endfunction
 
 " auto save on actions
 augroup MateriaSessionAutosave
-  autocmd! BufLeave,FocusLost,FocusGained,InsertLeave * if g:session_autosave_on_actions
+  autocmd! BufLeave,FocusLost,InsertLeave * if g:session_autosave_on_actions
     \| call MateriaSessionSave()
     \| endif
 augroup END
